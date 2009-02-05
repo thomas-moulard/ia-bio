@@ -1,0 +1,218 @@
+\documentclass[compress, mathserif, dvipsnames]{beamer}
+
+\usepackage{beamerthemesplit}
+\usetheme{Warsaw}
+
+\setbeamercolor{uppercol}{fg=white,bg=blue!40}
+\setbeamercolor{lowercol}{fg=black,bg=blue!15}
+\beamertemplateshadingbackground{blue!5}{blue!20}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{pgf}
+\usepackage{listings}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage[french]{babel}
+
+\ifx\pdftexversion\undefined
+\usepackage[dvips]{graphicx}
+\else
+\usepackage{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+\usepackage{placeins}
+
+\newcommand{\img}[1]{
+  \includegraphics[width=\textwidth]{#1}
+}
+
+
+% Change the default bottom line to include the page number.
+\defbeamertemplate*{footline}{infolines theme without institution}
+{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1.125ex,center]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.50\paperwidth,ht=2.25ex,dp=1.125ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1.125ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}%
+      % \insertshortdate{}\hspace*{2em}
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\bibliographystyle{apalike}
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Table des matières}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%% ----------------------------------------------------------------------------
+%% -- Listings
+%% ----------------------------------------------------------------------------
+\title[Rule based network models]
+      {Domain-oriented reduction of rule-based network models}
+
+\date{05/02/2009}
+\author{Thomas Moulard}
+\institute[MPRI]{Master Parisien de Recherche en Informatique}
+\subject{Domain-oriented reduction of rule-based network models}
+\keywords{abstract, interpretation, bio, domain, network, model, rule-based}
+
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Table des matières}
+
+  \tableofcontents
+\end{frame}
+
+%% \begin{frame}
+%%   \frametitle{Copying}
+%%
+%%   FIXME : Copyright
+%% \end{frame}
+
+\section{Introduction}
+\subsection{Limites des modèles microscopiques}
+
+\begin{frame}
+  \frametitle{Objectifs}
+
+  \begin{block}{Description du problème}
+    \begin{itemize}
+    \item Etude des interactions entre protéines.
+    \item Description des interactions sous forme de règle.
+      Exemple: $A(b) + B(a, c) \longleftrightarrow A (b!1) . B (a!1, c) k\_on, k\_off$
+    \item Problème: explosion combinatoire du nombre d'espèces chimiques/de réactions.
+    \item Solution: abstraction permettant de réduire largement la taille du modèle/de la simulation.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Pourquoi une explosion combinatoire?}
+
+  \begin{block}{Description du modèle utilisé}
+    \begin{itemize}
+    \item Protéines: \emph{sites} multiples aillant chacun plusieurs \emph{états} différents.
+    \item Exemple: protéine phosphorylée/non-phosphorylée (état), libre/liée (site).
+    \item Modèle microscopique: décrit l'ensemble des états et des réactions possibles.
+    \item Impossible de travailler avec un modèle microscopique ($10^{23}$ espèces!).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemple graphique}
+
+  \begin{figure}[htbp]
+    \begin{center}
+      \includegraphics[width=6cm]{fig1.png}
+    \end{center}
+    \caption{\footnotesize Exemple d'interaction}
+  \end{figure}
+\end{frame}
+
+\subsection{Modèles orientés domaines}
+
+\begin{frame}
+  \frametitle{Vers un modèle macroscopique\ldots}
+
+  \begin{block}{Règle de simplification}
+    \begin{itemize}
+    \item But: ne maintenir qu'un sous-ensemble de combinaisons domaines/sites.
+    \item Possible sans perte de généralité car certains sites/domaines sont
+      indépendants ou sont contrôlés dans un ordre précis.
+    \item $q_i$ dépends de $q_j$ alors $q_j$ est un site controllant pour $q_i$.
+    \item Pour chaque protéine complexe (géniteur), on associe plusieurs
+      protéines simples (auxiliaires).
+    \item Concentration d'une protéine auxiliaire Q (sites: $q_1 \ldots q_n$,
+      états: $s_1 \ldots s_k$): somme des concentrations de toutes combinaisons
+      de la protéine initiale aillant les mêmes états que la protéine de départ.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Résultats}
+\subsection{Algorithme}
+
+\begin{frame}
+  \frametitle{Aperçu}
+
+  \begin{block}{Etapes}
+    \begin{enumerate}
+    \item Calcul des dépendances
+    \item Génération du modèle macroscopique (réécriture des règles).
+    \item Génération du réseau brut.
+    \item Suppression des espèces/réactions inexistantes.
+    \end{enumerate}
+  \end{block}
+
+  \begin{figure}[htbp]
+    \begin{center}
+      \includegraphics[width=6cm]{fig2.png}
+    \end{center}
+    \caption{\footnotesize Fonctionnement général}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{FIXME}
+
+  \begin{block}{FIXME}
+    \begin{itemize}
+    \item FIXME
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\subsection{Limites}
+
+\begin{frame}
+  \frametitle{FIXME}
+
+  \begin{block}{FIXME}
+    \begin{itemize}
+    \item FIXME
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+  \frametitle{FIXME}
+
+  \begin{block}{FIXME}
+    FIXME
+  \end{block}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Bibliographie}
+
+  \nocite{*}
+  \bibliography{biblio}
+\end{frame}
+
+\end{document}
