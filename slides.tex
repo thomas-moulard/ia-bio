@@ -151,7 +151,7 @@
   \end{block}
 \end{frame}
 
-\section{Définition du modèle macroscopique}
+\section[Modèle abstrait]{Définition du modèle macroscopique}
 \subsection{Algorithme}
 
 \begin{frame}
@@ -226,19 +226,69 @@
 \begin{frame}
   \frametitle{Résultats numériques}
 
-  \begin{block}{FIXME}
-    \begin{itemize}
-    \item FIXME
-    \end{itemize}
+  \begin{block}{Réseau type EGFR}
+  \begin{tabular}{|l|c|c|c|c|}
+    \hline
+     & \emph{Nb espèces} & \emph{Nb réactions} & \emph{CPU} & \emph{CPU (ODE)}\\
+    \hline
+    \emph{Deux t.} & 708/108 & 7432/534 & 51.6/8.45 & 1.45/0.22\\
+    \emph{Trois t.} & 6000/135 & 81364/642 & 662.0/12.0 & 12.58/0.76\\
+    \hline
+  \end{tabular}
+  \end{block}
+
+  \begin{block}{Réseau type $Fc\epsilon RI$}
+  \begin{tabular}{|l|c|c|c|c|}
+    \hline
+     & \emph{Nb espèces} & \emph{Nb réactions} & \emph{CPU} & \emph{CPU (ODE)}\\
+    \hline
+    \emph{Deux t.} & 213/48 & 2230/198 & 14.2/3.87 & 0.47/0.15\\
+    \emph{Trois t.} & 1599/60 & 22990/240 & 182.4/6.02 & 3.58/0.12\\
+    \hline
+  \end{tabular}
   \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{Limitations}
 
-  \begin{block}{FIXME}
+  \begin{block}{Nom de sites identiques}
     \begin{itemize}
-    \item FIXME
+    \item Sites considérés comme dépendants.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Dépendances implicites}
+    \begin{itemize}
+    \item Non considérées dans le calcul des ensembles de contrôle.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Liaison entre un site unique/partagé dans une protéine auxiliaire}
+    \begin{itemize}
+    \item Masse incorrecte!
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Limitations II}
+
+  \begin{block}{Relation de dépendance entre des sites de différentes protéines}
+    \begin{itemize}
+    \item Génération d'un modèle réduit incorrect.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Liaison entre deux sites partagés de différentes protéines}
+    \begin{itemize}
+    \item Génération d'un modèle réduit incorrect.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Simulation stochastique imprécise}
+    \begin{itemize}
+    \item Décorrélation des niveaux d'occupation au sein des protéines auxiliaires.
     \end{itemize}
   \end{block}
 \end{frame}
