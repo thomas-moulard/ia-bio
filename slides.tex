@@ -151,7 +151,7 @@
   \end{block}
 \end{frame}
 
-\section{Résultats}
+\section{Définition du modèle macroscopique}
 \subsection{Algorithme}
 
 \begin{frame}
@@ -175,7 +175,56 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{FIXME}
+  \frametitle{Etape 1: construction des protéines auxiliaires}
+
+  \begin{block}{Algorithme de construction des protéines auxiliaires}
+    \begin{enumerate}
+    \item Calcul des ensembles de contrôles
+    \item Rafinement des ensembles
+    \item Définition des protéines auxiliaires
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Exemple graphique}
+
+  \begin{figure}[htbp]
+    \begin{center}
+      \includegraphics[width=6cm]{fig1.png}
+    \end{center}
+    \caption{\footnotesize Exemple d'interaction}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Etape 2/3: calcul du modèle macroscopique}
+
+  \begin{block}{Algorithme de génération du modèle macroscopique}
+    \begin{enumerate}
+    \item Remplacement dans les règles des protéines par les ensembles de protéines auxiliaires.
+    \item Génération du modèle brut.
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Etape 4: correction du modèle}
+
+  \begin{block}{Algorithme de correction}
+    \begin{enumerate}
+    \item FIXME
+    \item FIXME
+    \item FIXME
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+
+\subsection{Résultats et limites}
+
+\begin{frame}
+  \frametitle{Résultats numériques}
 
   \begin{block}{FIXME}
     \begin{itemize}
@@ -184,11 +233,8 @@
   \end{block}
 \end{frame}
 
-
-\subsection{Limites}
-
 \begin{frame}
-  \frametitle{FIXME}
+  \frametitle{Limitations}
 
   \begin{block}{FIXME}
     \begin{itemize}
@@ -200,10 +246,26 @@
 \section{Conclusion}
 
 \begin{frame}
-  \frametitle{FIXME}
+  \frametitle{Conclusion}
 
-  \begin{block}{FIXME}
-    FIXME
+  \begin{block}{Bilan}
+    \begin{itemize}
+    \item Progrès réel:
+    \item méthode automatique
+    \item abstraction efficace
+    \item \ldots encore soumis à certaines limitations:
+    \item six limitations réelles dont certaines peuvent fausser le modèle.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Perspective}
+    \begin{itemize}
+    \item Détection des liens implicites via une méthode itérative.
+    \item Détection des liens entre des sites uniques/partagés de la même
+      protéine auxiliaire.
+    \item Utilisation de l'échantillonnage de Monte Carlo corrélé pour une
+      simulation plus précise.
+    \end{itemize}
   \end{block}
 \end{frame}
 
