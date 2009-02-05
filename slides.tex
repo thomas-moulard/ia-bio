@@ -141,7 +141,7 @@
     \item But: ne maintenir qu'un sous-ensemble de combinaisons domaines/sites.
     \item Possible sans perte de généralité car certains sites/domaines sont
       indépendants ou sont contrôlés dans un ordre précis.
-    \item $q_i$ dépends de $q_j$ alors $q_j$ est un site controllant pour $q_i$.
+    \item $q_i$ dépends de $q_j$ alors $q_j$ est un site contrôlant pour $q_i$.
     \item Pour chaque protéine complexe (géniteur), on associe plusieurs
       protéines simples (auxiliaires).
     \item Concentration d'une protéine auxiliaire Q (sites: $q_1 \ldots q_n$,
@@ -180,7 +180,7 @@
   \begin{block}{Algorithme de construction des protéines auxiliaires}
     \begin{enumerate}
     \item Calcul des ensembles de contrôles
-    \item Rafinement des ensembles
+    \item Raffinement des ensembles
     \item Définition des protéines auxiliaires
     \end{enumerate}
   \end{block}
@@ -213,9 +213,12 @@
 
   \begin{block}{Algorithme de correction}
     \begin{enumerate}
-    \item FIXME
-    \item FIXME
-    \item FIXME
+    \item Suppression des espèces contenant plusieurs protéines auxiliaires
+      issues d'une protéine initial identique.
+    \item Suppression de la production/consommation des espèces
+      liant/dissociant des sites partagés non-responsable.
+    \item Elimination des espèces contenant des protéines non-responsable si
+      leur contribution a déjà été pris en compte.
     \end{enumerate}
   \end{block}
 \end{frame}
