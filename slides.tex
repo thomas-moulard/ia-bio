@@ -145,8 +145,8 @@
     \item Pour chaque protéine complexe (géniteur), on associe plusieurs
       protéines simples (auxiliaires).
     \item Concentration d'une protéine auxiliaire Q (sites: $q_1 \ldots q_n$,
-      états: $s_1 \ldots s_k$): somme des concentrations de toutes combinaisons
-      de la protéine initiale aillant les mêmes états que la protéine de départ.
+      états: $s_1 \ldots s_k$): somme des concentrations de toutes les espèces
+      produites ``compatibles'' à partir de la molécule initiale.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -214,11 +214,11 @@
   \begin{block}{Algorithme de correction}
     \begin{enumerate}
     \item Suppression des espèces contenant plusieurs protéines auxiliaires
-      issues d'une protéine initial identique.
+      issues d'une protéine initiale identique.
     \item Suppression de la production/consommation des espèces
       liant/dissociant des sites partagés non-responsable.
     \item Elimination des espèces contenant des protéines non-responsable si
-      leur contribution a déjà été pris en compte.
+      leur contribution a déjà été prise en compte.
     \end{enumerate}
   \end{block}
 \end{frame}
